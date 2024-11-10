@@ -1,0 +1,40 @@
+//Calculate BMI and specify categories based on weight and height entered by user
+
+import java.util.Scanner;
+
+public class BMICalculator {
+    public static void main(String[] args) {
+        //Create scanner object for user input
+        Scanner scanner = new Scanner(System.in);
+
+        //Get user input
+        System.out.print("Enter weight(kg): ");
+        double weight = scanner.nextDouble();
+
+        System.out.print("Enter height(cm): ");
+        double height = scanner.nextDouble();
+
+        //Convert weight kg to pounds and height cm to inch
+        double weight_lb = weight * 2.20462;
+        double height_inch = height * 0.393701;
+
+        //Calculate BMI
+        double bmi = (weight_lb / (height_inch * height_inch)) * 703;
+
+        //Determine BMI category
+        String category;
+        if (bmi < 18.5) {
+            category = "Underweight";
+        } else if (bmi >= 18.5 && bmi < 25) {
+            category = "Healthy weight";
+        } else if (bmi >= 25.0 && bmi < 30.0 ) {
+            category = "Overweight";
+        } else {
+            category = "Obesity";
+        }
+
+        // Display the BMI and category
+        System.out.printf("Your BMI is: %.2f\n",bmi);
+        System.out.println("BMI Category: " + category);
+    }
+}
